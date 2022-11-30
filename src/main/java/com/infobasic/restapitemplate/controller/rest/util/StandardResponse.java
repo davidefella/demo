@@ -3,20 +3,20 @@ package com.infobasic.restapitemplate.controller.rest.util;
 import com.google.gson.JsonElement;
 
 public class StandardResponse {
-    private String StatusResponse;
+    private String statusresponse;
     private JsonElement data;
 
-    public StandardResponse(String statusResponse, JsonElement data) {
-        StatusResponse = statusResponse;
+    public StandardResponse(String statusresponse, JsonElement data) {
+        this.statusresponse = statusresponse;
         this.data = data;
     }
 
     public String getStatusResponse() {
-        return StatusResponse;
+        return statusresponse;
     }
 
-    public void setStatusResponse(String statusResponse) {
-        StatusResponse = statusResponse;
+    public void setStatusResponse(String statusresponse) {
+        this.statusresponse = statusresponse;
     }
 
     public JsonElement getData() {

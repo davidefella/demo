@@ -3,6 +3,7 @@ package com.infobasic.restapitemplate.service;
 import java.util.List;
 
 import com.infobasic.restapitemplate.model.User;
+import com.infobasic.restapitemplate.persistance.DatabaseInit;
 import com.infobasic.restapitemplate.persistance.DummyDatabase;
 
 public class UserService {
@@ -11,9 +12,9 @@ public class UserService {
     public UserService() {
         database = new DummyDatabase();
 
-        User u1 = new User(1, "myUsername", "myEmail", null, true, "ADMIN");
-        addUser(u1);
-
+        for(User u : DatabaseInit.initUsers()){
+            addUser(u); 
+        }
     }
 
     public void addUser(User u) {

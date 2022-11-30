@@ -18,7 +18,8 @@ public class UserController {
         get("/users", (req, res) -> {
             res.type("application/json");
 
-            StandardResponse response = new StandardResponse("200", new Gson().toJsonTree(userService.getAllUsers()));
+            StandardResponse response = new StandardResponse("200", 
+                                                            new Gson().toJsonTree(userService.getAllUsers()));
             return new Gson().toJson(response);
         });
 
