@@ -16,11 +16,7 @@ public class App
 
         UserService userService = new UserService(); 
 
-        User u1 = new User(1, "myUsername", "myEmail", null, true, "ADMIN"); 
-        userService.addUser(u1);
-
-        System.out.println( userService.getAllUsers() ); 
-    
-        UserController.startServices(); 
+        UserController userController = new UserController(); 
+        userController.startServices(userService); 
     }
 }

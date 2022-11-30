@@ -5,25 +5,23 @@ import java.util.List;
 import com.infobasic.restapitemplate.model.User;
 import com.infobasic.restapitemplate.persistance.DummyDatabase;
 
-/**
- * + addUser (User u)
- * + getUsers()
- * editUser()
- * + deleteUser()
- */
 public class UserService {
     DummyDatabase database;
 
     public UserService() {
         database = new DummyDatabase();
+
+        User u1 = new User(1, "myUsername", "myEmail", null, true, "ADMIN");
+        addUser(u1);
+
     }
 
     public void addUser(User u) {
         database.save(u);
     }
 
-    public List<User> getAllUsers(){
-        return database.getAllUsers(); 
+    public List<User> getAllUsers() {
+        return database.getAllUsers();
     }
 
 }

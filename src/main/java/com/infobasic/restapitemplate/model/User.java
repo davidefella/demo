@@ -1,17 +1,15 @@
 package com.infobasic.restapitemplate.model;
 
-import java.time.LocalDateTime;
-
 public class User {
     
     private int id; 
     private String username; 
     private String email; 
-    private LocalDateTime dateRegistered; //data e ora di registrazione
+    private String dateRegistered; //data e ora di registrazione
     private boolean isEnabled = true; 
     private String role;
 
-    public User(int id, String username, String email, LocalDateTime dateRegistered, boolean isEnabled, String role) {
+    public User(int id, String username, String email, String dateRegistered, boolean isEnabled, String role) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -44,11 +42,11 @@ public class User {
         this.email = email;
     }
 
-    public LocalDateTime getDateRegistered() {
+    public String getDateRegistered() {
         return dateRegistered;
     }
 
-    public void setDateRegistered(LocalDateTime dateRegistered) {
+    public void setDateRegistered(String dateRegistered) {
         this.dateRegistered = dateRegistered;
     }
 
