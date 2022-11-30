@@ -13,13 +13,13 @@ public class DatabaseInit {
 
         for (int i = 0; i < 10000; i++) {
             users.add(new User(i,
-                        "username" + i,
+                    "username" + i,
                     "email" + i,
                     LocalDateTime.now().toString(),
                     true,
                     "role" + i));
         }
 
-        return users; 
+        return users;
     }
 }
