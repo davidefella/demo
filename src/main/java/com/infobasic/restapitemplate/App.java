@@ -1,4 +1,4 @@
-package com.example;
+package com.infobasic.restapitemplate;
 
 import static spark.Spark.*;
 
