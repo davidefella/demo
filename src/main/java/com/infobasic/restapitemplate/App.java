@@ -1,7 +1,7 @@
 package com.infobasic.restapitemplate;
 
-import static spark.Spark.*;
 
+import com.infobasic.restapitemplate.controller.rest.UserController;
 import com.infobasic.restapitemplate.model.User;
 import com.infobasic.restapitemplate.service.UserService;
 
@@ -21,7 +21,6 @@ public class App
 
         System.out.println( userService.getAllUsers() ); 
     
-
-        //get("/helloworld", (req,res) -> "Hello World!" );
+        UserController.startServices(); 
     }
 }

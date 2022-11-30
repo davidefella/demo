@@ -6,3 +6,5 @@ Quali servizi HTTP:
     - DELETE 
     - PUT 
     - bonus: PATCH
+
+Indirizzo di default: http://localhost:4567
