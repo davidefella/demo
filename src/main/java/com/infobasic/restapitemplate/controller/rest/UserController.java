@@ -7,14 +7,26 @@ import com.infobasic.restapitemplate.controller.rest.util.StandardResponse;
 import com.infobasic.restapitemplate.model.User;
 import com.infobasic.restapitemplate.service.UserService;
 
+import spark.Filter;
+
 public class UserController {
-    String APIVersion = "/v1"; 
+    String APIVersion = "/v1";
 
     public void startServices(UserService userService) {
 
+        after((Filter) (req, res) -> {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, eContent-Type, Accept");
+            res.header("Access-Control-Max-Age", "86400");
+
+            res.status(200);
+
+        });
+
         get("/", (req, res) -> "System online!");
 
-        get(APIVersion+"/user", (req, res) -> {
+        get(APIVersion + "/user", (req, res) -> {
             res.type("application/json");
 
             StandardResponse response = new StandardResponse("200",
@@ -22,7 +34,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-        get(APIVersion+"/user/id/:id", (req, res) -> {
+        get(APIVersion + "/user/id/:id", (req, res) -> {
             res.type("application/json");
 
             int paramID = Integer.parseInt(req.params("id"));
@@ -32,7 +44,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-        get(APIVersion+"/user/name/:name", (req, res) -> {
+        get(APIVersion + "/user/name/:name", (req, res) -> {
             res.type("application/json");
 
             String paramName = req.params("name");
@@ -42,7 +54,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-        delete(APIVersion+"/user/delete/id/:id", (req, res) -> {
+        delete(APIVersion + "/user/delete/id/:id", (req, res) -> {
             res.type("application/json");
 
             int paramID = Integer.parseInt(req.params("id"));
@@ -52,7 +64,7 @@ public class UserController {
 
         });
 
-        post(APIVersion+"/user/create", (req, res) -> {
+        post(APIVersion + "/user/create", (req, res) -> {
             res.type("application/json");
 
             User userFromRequest = new Gson()
@@ -63,7 +75,7 @@ public class UserController {
             return new Gson().toJson(new StandardResponse("200"));
         });
 
-        put(APIVersion+"/user/update", (req, res) -> {
+        put(APIVersion + "/user/update", (req, res) -> {
             res.type("application/json");
 
             /*
