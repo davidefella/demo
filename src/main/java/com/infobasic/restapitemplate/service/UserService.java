@@ -25,4 +25,18 @@ public class UserService {
         return database.getAllUsers();
     }
 
+    public List<User> getAllUsersByName(String name) {
+        return database.getAllUsers();
+    }
+  
+
+    /**
+     * TODO: Implementare metodo di ricerca in Database.java
+     */
+    public User getUserById(int id) {
+
+        // Sono sicuro ci sono i dati perché ho il mio init database
+        return database.getAllUsers().get(0); 
+    }
+
 }
