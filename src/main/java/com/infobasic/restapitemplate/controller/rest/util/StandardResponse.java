@@ -11,6 +11,10 @@ public class StandardResponse {
         this.data = data;
     }
 
+    public StandardResponse(String statusresponse) {
+        this.statusresponse = statusresponse;
+    }
+
     public String getStatusResponse() {
         return statusresponse;
     }

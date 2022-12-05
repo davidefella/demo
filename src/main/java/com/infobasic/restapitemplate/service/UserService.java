@@ -28,7 +28,6 @@ public class UserService {
     public List<User> getAllUsersByName(String name) {
         return database.getAllUsers();
     }
-  
 
     /**
      * TODO: Implementare metodo di ricerca in Database.java
@@ -37,6 +36,12 @@ public class UserService {
 
         // Sono sicuro ci sono i dati perché ho il mio init database
         return database.getAllUsers().get(0); 
+    }
+
+        /**
+     * TODO: Implementare metodo di cancellazione in Database.java
+     */
+    public void deleteUserById(int id) {
     }
 
 }
