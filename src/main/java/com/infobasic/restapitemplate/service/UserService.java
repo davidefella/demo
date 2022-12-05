@@ -21,6 +21,11 @@ public class UserService {
         database.save(u);
     }
 
+    /*TODO: Scrivere il codice per aggiornamento dei dati */
+    public User updateUser(User u) {
+        return u; 
+    }
+
     public List<User> getAllUsers() {
         return database.getAllUsers();
     }

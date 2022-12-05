@@ -8,12 +8,13 @@ import com.infobasic.restapitemplate.model.User;
 import com.infobasic.restapitemplate.service.UserService;
 
 public class UserController {
+    String APIVersion = "/v1"; 
 
     public void startServices(UserService userService) {
 
         get("/", (req, res) -> "System online!");
 
-        get("/user", (req, res) -> {
+        get(APIVersion+"/user", (req, res) -> {
             res.type("application/json");
 
             StandardResponse response = new StandardResponse("200",
@@ -21,7 +22,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-        get("/user/id/:id", (req, res) -> {
+        get(APIVersion+"/user/id/:id", (req, res) -> {
             res.type("application/json");
 
             int paramID = Integer.parseInt(req.params("id"));
@@ -31,7 +32,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-        get("/user/name/:name", (req, res) -> {
+        get(APIVersion+"/user/name/:name", (req, res) -> {
             res.type("application/json");
 
             String paramName = req.params("name");
@@ -41,8 +42,7 @@ public class UserController {
             return new Gson().toJson(response);
         });
 
-
-        delete("/user/delete/id/:id", (req, res) -> {
+        delete(APIVersion+"/user/delete/id/:id", (req, res) -> {
             res.type("application/json");
 
             int paramID = Integer.parseInt(req.params("id"));
@@ -52,7 +52,7 @@ public class UserController {
 
         });
 
-        post("/user/create", (req, res) -> {
+        post(APIVersion+"/user/create", (req, res) -> {
             res.type("application/json");
 
             User userFromRequest = new Gson()
@@ -61,6 +61,34 @@ public class UserController {
             userService.addUser(userFromRequest);
 
             return new Gson().toJson(new StandardResponse("200"));
+        });
+
+        put(APIVersion+"/user/update", (req, res) -> {
+            res.type("application/json");
+
+            /*
+             * Passi per aggionare un record:
+             * 
+             * 1) Prendo il record nuovo da request
+             * 2) Prendo il record da aggiornare nel database
+             * 3) Sovrascrivo (non ID)
+             * 4) Rimando il nuovo record aggiornato
+             */
+            User newUser = new Gson().fromJson(req.body(), User.class);
+            User oldUser = userService.getUserById(newUser.getId()); // Prevedere controllo su ID
+
+            /* Non prevedo aggiornamento dell'ID */
+            if (oldUser != null) {
+                oldUser.setDateRegistered(newUser.getDateRegistered());
+                oldUser.setEmail(newUser.getEmail());
+                oldUser.setEnabled(newUser.isEnabled());
+                oldUser.setRole(newUser.getRole());
+                oldUser.setUsername(newUser.getUsername());
+            }
+
+            StandardResponse response = new StandardResponse("200",
+                    new Gson().toJsonTree(userService.updateUser(oldUser)));
+            return new Gson().toJson(response);
         });
 
     }

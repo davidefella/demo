@@ -13,6 +13,7 @@ public class DummyDatabase {
     List<User> users; 
 
     public DummyDatabase(){
+
         users = new ArrayList<User>(); 
     }
 
