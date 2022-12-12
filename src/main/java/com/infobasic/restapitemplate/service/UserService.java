@@ -8,6 +8,7 @@ import com.infobasic.restapitemplate.persistance.DummyDatabase;
 
 public class UserService {
     DummyDatabase database;
+    //DaoUser daoUser; 
 
     public UserService() {
         database = new DummyDatabase();
