@@ -27,21 +27,10 @@ public class UserDaoImpl implements UserDao {
 
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
-
-
     }
-
-
-    /*private String username; 
-    private String email; 
-    private String dateRegistered; //data e ora di registrazione
-    private boolean isEnabled = true; 
-    private String role;*/
-
-
 
     @Override
     public User findByID(int id) {
