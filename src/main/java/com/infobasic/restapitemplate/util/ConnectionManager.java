@@ -17,6 +17,9 @@ public class ConnectionManager {
 
     public static Connection getConnetion(){
 
+        if(connection != null)
+            return connection; 
+
         String driverClassName = "org.postgresql.Driver"; 
 
         try {
